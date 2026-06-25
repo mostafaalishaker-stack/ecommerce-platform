@@ -28,6 +28,14 @@ public class ProductsController : ControllerBase
     public async Task<IActionResult> Create(CreateProductRequest req)
         => Ok(await _service.Create(req));
 
+    [HttpPut("{id}")]
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> Update(int id, CreateProductRequest req)
+    {
+        var product = await _service.Update(id, req);
+        return product is null ? NotFound() : Ok(product);
+    }
+
     [HttpDelete("{id}")]
     [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Delete(int id)

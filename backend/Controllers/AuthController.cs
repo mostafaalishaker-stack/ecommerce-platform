@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using System.ComponentModel.DataAnnotations;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -23,31 +24,42 @@ public class AuthController : ControllerBase
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterRequest req)
     {
+        if (string.IsNullOrWhiteSpace(req.Email) || string.IsNullOrWhiteSpace(req.Password))
+            return BadRequest("Email and password are required");
+
+        if (req.Password.Length < 6)
+            return BadRequest("Password must be at least 6 characters");
+
         var user = new IdentityUser { UserName = req.Email, Email = req.Email };
         var result = await _userManager.CreateAsync(user, req.Password);
         if (!result.Succeeded) return BadRequest(result.Errors);
 
         await _userManager.AddToRoleAsync(user, "Customer");
-        return Ok(new { Token = GenerateToken(user) });
+        return Ok(new { Token = await GenerateToken(user) });
     }
 
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginRequest req)
     {
+        if (string.IsNullOrWhiteSpace(req.Email) || string.IsNullOrWhiteSpace(req.Password))
+            return BadRequest("Email and password are required");
+
         var user = await _userManager.FindByEmailAsync(req.Email);
         if (user is null || !await _userManager.CheckPasswordAsync(user, req.Password))
             return Unauthorized("Invalid credentials");
 
-        return Ok(new { Token = GenerateToken(user) });
+        return Ok(new { Token = await GenerateToken(user) });
     }
 
-    private string GenerateToken(IdentityUser user)
+    private async Task<string> GenerateToken(IdentityUser user)
     {
+        var roles = await _userManager.GetRolesAsync(user);
         var claims = new List<Claim>
         {
             new(ClaimTypes.NameIdentifier, user.Id),
             new(ClaimTypes.Email, user.Email!)
         };
+        claims.AddRange(roles.Select(r => new Claim(ClaimTypes.Role, r)));
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]!));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -56,7 +68,7 @@ public class AuthController : ControllerBase
             issuer: _config["Jwt:Issuer"],
             audience: _config["Jwt:Audience"],
             claims: claims,
-            expires: DateTime.Now.AddDays(7),
+            expires: DateTime.Now.AddHours(2),
             signingCredentials: creds
         );
 
@@ -64,5 +76,5 @@ public class AuthController : ControllerBase
     }
 }
 
-public record RegisterRequest(string Email, string Password);
-public record LoginRequest(string Email, string Password);
+public record RegisterRequest([Required, EmailAddress] string Email, [Required, MinLength(6)] string Password);
+public record LoginRequest([Required, EmailAddress] string Email, [Required] string Password);

@@ -17,6 +17,10 @@ builder.Services.AddDbContext<AppDbContext>(opts =>
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>();
 
+var jwtKey = builder.Configuration["Jwt:Key"];
+if (string.IsNullOrEmpty(jwtKey) || jwtKey.Length < 32)
+    throw new InvalidOperationException("JWT Key must be configured with at least 32 characters via environment variable 'Jwt:Key'.");
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(opts =>
     {
@@ -28,16 +32,24 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateIssuerSigningKey = true,
             ValidIssuer = builder.Configuration["Jwt:Issuer"],
             ValidAudience = builder.Configuration["Jwt:Audience"],
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!))
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey))
         };
     });
 
 builder.Services.AddScoped<ProductService>();
 builder.Services.AddScoped<OrderService>();
 
-builder.Services.AddCors(opts => opts.AddDefaultPolicy(p => p.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
+builder.Services.AddCors(opts => opts.AddDefaultPolicy(p =>
+    p.WithOrigins(builder.Environment.IsDevelopment()
+        ? new[] { "http://localhost:4200" }
+        : new[] { "https://yourdomain.com" })
+     .AllowAnyMethod()
+     .AllowAnyHeader()
+     .AllowCredentials()));
 
 var app = builder.Build();
+
+app.UseHttpsRedirection();
 
 using (var scope = app.Services.CreateScope())
 {

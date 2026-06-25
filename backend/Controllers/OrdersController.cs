@@ -28,4 +28,12 @@ public class OrdersController : ControllerBase
     [Authorize(Roles = "Admin")]
     public async Task<IActionResult> GetAllOrders()
         => Ok(await _service.GetAllOrders());
+
+    [HttpPut("{id}/status")]
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> UpdateStatus(int id, [FromBody] UpdateOrderStatusRequest req)
+    {
+        var updated = await _service.UpdateStatus(id, req.Status);
+        return updated is null ? NotFound() : Ok(updated);
+    }
 }

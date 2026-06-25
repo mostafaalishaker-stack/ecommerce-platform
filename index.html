@@ -2,11 +2,23 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+  <meta name="description" content="Full online store with product catalog, cart, checkout, order history, and admin dashboard. Built with Angular 18, .NET 9, SQL Server.">
+  <meta property="og:title" content="E-commerce Platform - Mostafa Ali Portfolio">
+  <meta property="og:description" content="Full-featured e-commerce platform with product management, shopping cart, Stripe payments, and admin dashboard.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mostafaali.dev/ecommerce-platform/">
+  <meta property="og:image" content="https://mostafaali.dev/profile.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="E-commerce Platform - Mostafa Ali Portfolio">
+  <meta name="twitter:description" content="Full-featured e-commerce platform with product management, shopping cart, Stripe payments, and admin dashboard.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>E-Commerce Platform – Project Showcase</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
 <style>
   *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -102,6 +114,17 @@
   @media(max-width:800px){.mockup-body{flex-direction:column}.mockup-sidebar{width:100%}.mockup-grid{grid-template-columns:repeat(2,1fr)}.features-grid{grid-template-columns:1fr}.container{padding:0 16px}.hero{padding:40px 0 24px}}
   @media(max-width:480px){.mockup-grid{grid-template-columns:1fr}}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "E-Commerce Platform",
+  "applicationCategory": "E-Commerce",
+  "operatingSystem": "Windows, Linux, macOS",
+  "author": { "@type": "Person", "name": "Mostafa Ali" },
+  "description": "Full-featured e-commerce platform with product management, shopping cart, Stripe payments, and admin dashboard."
+}
+</script>
 </head>
 <body>
 
@@ -111,14 +134,14 @@
   <section class="hero">
     <div class="hero-badge"><i class="fas fa-shopping-cart"></i> Angular + .NET + SQL Server</div>
     <h1 class="hero-title">E-Commerce Platform</h1>
-    <p class="hero-desc">A full-featured online store with ASP.NET Core Identity, JWT authentication, product catalog management, shopping cart, and role-based admin dashboard.</p>
+    <p class="hero-desc">An online store showcase with ASP.NET Core Identity, JWT authentication, product catalog management, shopping cart, and admin dashboard.</p>
   </section>
 
   <div class="mockup">
     <div class="mockup-navbar">
       <div class="mockup-navbar-left">
         <div class="logo">S</div>
-        <span>ShopHub</span>
+        <span>ShopEase</span>
       </div>
       <div class="mockup-navbar-right">
         <i class="fas fa-search" style="font-size:14px;color:#475569"></i>
@@ -205,6 +228,15 @@
     </div>
   </div>
 
+  <section class="section">
+  <div class="section-title"><i class="fas fa-bullseye"></i> Case Study</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+    <div class="feature-card"><i class="fas fa-exclamation-triangle" style="color:#f59e0b"></i><h4>Problem</h4><p>Small businesses need an affordable, full-featured e-commerce platform without monthly subscription fees.</p></div>
+    <div class="feature-card"><i class="fas fa-lightbulb" style="color:#8b5cf6"></i><h4>Solution</h4><p>Developed a complete e-commerce platform with Angular 18 frontend and .NET 9 backend with SQL Server featuring product management, shopping cart, order tracking, and admin dashboard.</p></div>
+    <div class="feature-card"><i class="fas fa-chart-line" style="color:#22c55e"></i><h4>Result</h4><p>Self-hosted e-commerce platform with JWT authentication, role-based access, and full CRUD product management.</p></div>
+  </div>
+</section>
+
   <h2 class="section-title"><i class="fas fa-star"></i> Features</h2>
   <div class="features-grid">
     <div class="feature-card">
@@ -215,27 +247,27 @@
     <div class="feature-card">
       <div class="feature-card-icon"><i class="fas fa-boxes"></i></div>
       <h3>Product Catalog with Categories</h3>
-      <p>Full CRUD for products with image upload, category filtering, and search.</p>
+      <p>Full CRUD for products with category filtering and search.</p>
     </div>
     <div class="feature-card">
       <div class="feature-card-icon"><i class="fas fa-shopping-cart"></i></div>
       <h3>Shopping Cart</h3>
-      <p>Persistent cart with quantity controls, coupon codes, and real-time total calculation.</p>
+      <p>Persistent cart with quantity controls and total calculation.</p>
     </div>
     <div class="feature-card">
       <div class="feature-card-icon"><i class="fas fa-history"></i></div>
       <h3>Order History</h3>
-      <p>Complete order tracking with status updates, invoice generation, and reorder functionality.</p>
+      <p>Order tracking with status updates.</p>
     </div>
     <div class="feature-card">
       <div class="feature-card-icon"><i class="fas fa-chart-bar"></i></div>
       <h3>Admin Dashboard</h3>
-      <p>Analytics dashboard with sales charts, top products, revenue reports, and user management.</p>
+      <p>Order management dashboard for administrators.</p>
     </div>
     <div class="feature-card">
       <div class="feature-card-icon"><i class="fas fa-user-tag"></i></div>
       <h3>Role-based Auth</h3>
-      <p>Granular role-based access with Admin, Manager, and Customer roles via Identity policies.</p>
+      <p>Role-based access with Admin and Customer roles via Identity policies.</p>
     </div>
   </div>
 
@@ -255,6 +287,7 @@
   <div class="arch-tree">
 <pre><span class="dir">backend/</span>
   <span class="file">├── Program.cs</span>
+  <span class="file">├── appsettings.json</span>
   <span class="file">├── Controllers/</span>
   <span class="file">│   ├── AuthController.cs</span>
   <span class="file">│   ├── ProductsController.cs</span>
@@ -263,32 +296,57 @@
   <span class="file">│   ├── Product.cs</span>
   <span class="file">│   └── Order.cs</span>
   <span class="file">├── Data/</span>
-  <span class="file">│   └── AppDbContext.cs</span>
+  <span class="file">│   ├── AppDbContext.cs</span>
+  <span class="file">│   └── DbSeeder.cs</span>
+  <span class="file">├── DTOs/</span>
+  <span class="file">│   ├── ProductDTOs.cs</span>
+  <span class="file">│   └── OrderDTOs.cs</span>
   <span class="file">└── Services/</span>
   <span class="file">    ├── ProductService.cs</span>
   <span class="file">    └── OrderService.cs</span>
 <span class="dir">frontend/</span>
-  <span class="file">├── app/</span>
-  <span class="file">│   └── app.routes.ts</span>
-  <span class="file">└── app/pages/</span>
-  <span class="file">    ├── products/</span>
-  <span class="file">    ├── cart/</span>
-  <span class="file">    ├── auth/</span>
-  <span class="file">    └── admin/</span></pre>
+  <span class="file">├── src/</span>
+  <span class="file">│   ├── index.html</span>
+  <span class="file">│   ├── main.ts</span>
+  <span class="file">│   ├── styles.css</span>
+  <span class="file">│   └── app/</span>
+  <span class="file">│       ├── app.component.ts</span>
+  <span class="file">│       ├── app.routes.ts</span>
+  <span class="file">│       ├── components/</span>
+  <span class="file">│       │   └── navbar.component.ts</span>
+  <span class="file">│       ├── pages/</span>
+  <span class="file">│       │   ├── products/</span>
+  <span class="file">│       │   ├── cart/</span>
+  <span class="file">│       │   ├── auth/</span>
+  <span class="file">│       │   └── admin/</span>
+  <span class="file">│       ├── services/</span>
+  <span class="file">│       │   ├── api.service.ts</span>
+  <span class="file">│       │   ├── auth.interceptor.ts</span>
+  <span class="file">│       │   └── cart.service.ts</span>
+  <span class="file">│       ├── models/</span>
+  <span class="file">│       │   ├── product.model.ts</span>
+  <span class="file">│       │   └── order.model.ts</span>
+  <span class="file">│       └── guards/</span>
+  <span class="file">│           └── auth.guard.ts</span>
+  <span class="file">├── angular.json</span>
+  <span class="file">├── tailwind.config.js</span>
+  <span class="file">├── postcss.config.js</span>
+  <span class="file">├── proxy.conf.json</span>
+  <span class="file">└── package.json</span></pre>
   </div>
 
   <h2 class="section-title"><i class="fas fa-terminal"></i> Quick Start</h2>
   <div class="code-block">
     <div class="code-block-header"><span><i class="fas fa-terminal"></i> Terminal</span><span style="color:#475569">bash</span></div>
 <pre><span class="cm"># Clone the repository</span>
-git clone https://github.com/yourusername/ecommerce-platform.git
+git clone https://github.com/mostafaali/ecommerce-platform.git
 cd ecommerce-platform
 
 <span class="cm"># Set up the backend</span>
 cd backend
 dotnet restore
-dotnet ef database update
 dotnet run
+<span class="cm"># Database is auto-created via EnsureCreated()</span>
 
 <span class="cm"># In another terminal – set up the frontend</span>
 cd frontend
@@ -297,7 +355,7 @@ npm install
   </div>
 
   <footer class="footer">
-    <a href="https://github.com/yourusername/ecommerce-platform" target="_blank"><i class="fab fa-github"></i> View on GitHub</a>
+    <a href="https://github.com/mostafaali/ecommerce-platform" target="_blank"><i class="fab fa-github"></i> View on GitHub</a>
   </footer>
 </div>
 

@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { Order } from '../../models/order.model';
@@ -5,6 +6,7 @@ import { Order } from '../../models/order.model';
 @Component({
   selector: 'app-admin',
   standalone: true,
+  imports: [CommonModule],
   template: `
     <div class="max-w-6xl mx-auto px-4 py-10">
       <h1 class="text-3xl font-bold mb-8">Admin Dashboard</h1>

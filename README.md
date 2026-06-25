@@ -10,8 +10,6 @@ A full-stack e-commerce platform built with Angular 18 and .NET 9 Web API.
 | Backend | .NET 9 Web API, C# |
 | Database | SQL Server (Entity Framework Core) |
 | Auth | JWT (ASP.NET Core Identity) |
-| Payments | Stripe integration |
-| Deployment | Vercel (frontend) + Azure (backend) |
 
 ## Features
 
@@ -20,7 +18,6 @@ A full-stack e-commerce platform built with Angular 18 and .NET 9 Web API.
 - User authentication & roles (Customer/Admin)
 - Order management & checkout
 - Admin dashboard for product/order management
-- Payment integration with Stripe
 - Responsive design
 
 ## Setup

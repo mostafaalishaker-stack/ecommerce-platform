@@ -29,7 +29,7 @@ import { ApiService } from '../../services/api.service';
                 <p class="text-gray-500 text-sm">\${{item.product.price}} x {{item.quantity}}</p>
               </div>
               <p class="font-bold">\${{(item.product.price * item.quantity).toFixed(2)}}</p>
-              <button (click)="cart.remove(item.product.id)" class="text-red-400 hover:text-red-600"><i class="fas fa-trash"></i></button>
+              <button (click)="cart.remove(item.product.id)" class="text-red-400 hover:text-red-600" [attr.aria-label]="'Remove ' + item.product.name + ' from cart'"><i class="fas fa-trash" aria-hidden="true"></i></button>
             </div>
           }
         </div>
@@ -40,8 +40,9 @@ import { ApiService } from '../../services/api.service';
             <span>\${{cart.total.toFixed(2)}}</span>
           </div>
           <div class="mt-4">
-            <input #address type="text" placeholder="Shipping Address" class="w-full border rounded-lg px-4 py-3 mb-3">
-            <button (click)="checkout(address.value)" class="w-full bg-indigo-600 text-white py-3 rounded-xl font-semibold hover:bg-indigo-700 transition">
+            <label for="shippingAddress" class="sr-only">Shipping Address</label>
+            <input #address id="shippingAddress" type="text" placeholder="Shipping Address" class="w-full border rounded-lg px-4 py-3 mb-3" autocomplete="street-address">
+            <button (click)="checkout(address.value)" class="w-full bg-indigo-600 text-white py-3 rounded-xl font-semibold hover:bg-indigo-700 transition" aria-label="Proceed to checkout">
               <i class="fas fa-credit-card mr-2"></i> Checkout
             </button>
           </div>

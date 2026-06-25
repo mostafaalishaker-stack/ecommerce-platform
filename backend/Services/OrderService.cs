@@ -27,13 +27,28 @@ public class OrderService
         foreach (var item in req.Items)
         {
             var product = await _context.Products.FindAsync(item.ProductId);
-            if (product is null) continue;
+            if (product is null)
+                throw new InvalidOperationException($"Product with ID {item.ProductId} not found.");
+
+            if (product.Stock < item.Quantity)
+                throw new InvalidOperationException($"Insufficient stock for product '{product.Name}'. Available: {product.Stock}, requested: {item.Quantity}.");
+
             order.Items.Add(new OrderItem { ProductId = product.Id, ProductName = product.Name, Price = product.Price, Quantity = item.Quantity });
             order.Total += product.Price * item.Quantity;
             product.Stock -= item.Quantity;
         }
 
         _context.Orders.Add(order);
+        await _context.SaveChangesAsync();
+        return new OrderResponse(order.Id, order.CreatedAt, order.Total, order.Status,
+            order.Items.Select(i => new OrderItemResponse(i.ProductName, i.Price, i.Quantity)).ToList());
+    }
+
+    public async Task<OrderResponse?> UpdateStatus(int orderId, string status)
+    {
+        var order = await _context.Orders.Include(o => o.Items).FirstOrDefaultAsync(o => o.Id == orderId);
+        if (order is null) return null;
+        order.Status = status;
         await _context.SaveChangesAsync();
         return new OrderResponse(order.Id, order.CreatedAt, order.Total, order.Status,
             order.Items.Select(i => new OrderItemResponse(i.ProductName, i.Price, i.Quantity)).ToList());

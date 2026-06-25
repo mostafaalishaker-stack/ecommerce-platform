@@ -2,12 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+  <meta name="description" content="Interactive demo of E-Commerce Platform showcasing product catalog, shopping cart, and checkout flow. Angular + .NET portfolio project.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>E-Commerce Store Demo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Inter', sans-serif; background: #0b1120; color: #e2e8f0; min-height: 100vh; }
@@ -97,11 +99,11 @@ body { font-family: 'Inter', sans-serif; background: #0b1120; color: #e2e8f0; mi
 </head>
 <body>
 
-<a href="#" class="back-link" onclick="history.back(); return false;"><i class="fas fa-arrow-left"></i> Back to Project</a>
+<a href="../index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
 
 <nav class="navbar">
   <div class="nav-left">
-    <div class="nav-logo"><i class="fas fa-store"></i>ShopHub</div>
+    <div class="nav-logo"><i class="fas fa-store"></i>ShopEase</div>
     <ul class="nav-links">
       <li><a href="#" class="active">Home</a></li>
       <li><a href="#">Shop</a></li>
@@ -117,7 +119,7 @@ body { font-family: 'Inter', sans-serif; background: #0b1120; color: #e2e8f0; mi
 <section class="hero">
   <h1>Summer Sale - Up to <span>50% Off</span></h1>
   <p>Grab the best deals on top brands before they're gone</p>
-  <button class="shop-now" onclick="alert('Welcome to ShopHub! Browse our products below.');">Shop Now</button>
+  <button class="shop-now" onclick="alert('Welcome to ShopEase! Browse our products below.');">Shop Now</button>
 </section>
 
 <div class="categories" id="categories">
@@ -265,7 +267,7 @@ function checkout() {
   const total = cart.reduce((sum, c) => sum + c.price * c.quantity, 0);
   if (total === 0) { alert('Your cart is empty!'); return; }
   const itemCount = cart.reduce((sum, c) => sum + c.quantity, 0);
-  alert('Checkout - Total: $' + total.toFixed(2) + ' (' + itemCount + ' item' + (itemCount > 1 ? 's' : '') + ')\nThank you for shopping with ShopHub!');
+  alert('Checkout - Total: $' + total.toFixed(2) + ' (' + itemCount + ' item' + (itemCount > 1 ? 's' : '') + ')\nThank you for shopping with ShopEase!');
 }
 
 document.querySelectorAll('.cat-btn').forEach(btn => {

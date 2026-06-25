@@ -13,10 +13,12 @@ export class CartService {
     localStorage.setItem('cart', JSON.stringify(this.items()));
   }
 
-  add(product: any, quantity = 1) {
+  add(product: { id: number; name: string; price: number; imageUrl: string; stock: number }, quantity = 1) {
     const existing = this.items().find(i => i.product.id === product.id);
     if (existing) {
-      existing.quantity += quantity;
+      this.items.update(items => items.map(i =>
+        i.product.id === product.id ? { ...i, quantity: i.quantity + quantity } : i
+      ));
     } else {
       this.items.update(items => [...items, { product, quantity }]);
     }

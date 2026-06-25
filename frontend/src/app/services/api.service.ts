@@ -3,10 +3,11 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Product } from '../models/product.model';
 import { Order } from '../models/order.model';
+import { environment } from '../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
-  private base = 'http://localhost:5000/api';
+  private base = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 
@@ -29,11 +30,11 @@ export class ApiService {
     return this.http.get<Order[]>(`${this.base}/orders`);
   }
 
-  login(email: string, password: string): Observable<any> {
-    return this.http.post(`${this.base}/auth/login`, { email, password });
+  login(email: string, password: string): Observable<{ token: string }> {
+    return this.http.post<{ token: string }>(`${this.base}/auth/login`, { email, password });
   }
 
-  register(email: string, password: string): Observable<any> {
-    return this.http.post(`${this.base}/auth/register`, { email, password });
+  register(email: string, password: string): Observable<{ token: string }> {
+    return this.http.post<{ token: string }>(`${this.base}/auth/register`, { email, password });
   }
 }

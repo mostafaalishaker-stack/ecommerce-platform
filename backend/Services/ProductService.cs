@@ -32,6 +32,20 @@ public class ProductService
         return new ProductResponse(p.Id, p.Name, p.Description, p.Price, p.ImageUrl, p.Category, p.Stock);
     }
 
+    public async Task<ProductResponse?> Update(int id, CreateProductRequest req)
+    {
+        var p = await _context.Products.FindAsync(id);
+        if (p is null) return null;
+        p.Name = req.Name;
+        p.Description = req.Description;
+        p.Price = req.Price;
+        p.ImageUrl = req.ImageUrl;
+        p.Category = req.Category;
+        p.Stock = req.Stock;
+        await _context.SaveChangesAsync();
+        return new ProductResponse(p.Id, p.Name, p.Description, p.Price, p.ImageUrl, p.Category, p.Stock);
+    }
+
     public async Task<bool> Delete(int id)
     {
         var p = await _context.Products.FindAsync(id);
