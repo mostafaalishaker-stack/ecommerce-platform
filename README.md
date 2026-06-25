@@ -1,15 +1,15 @@
 # E-Commerce Platform
 
-A full-stack e-commerce platform built with Angular 18 and .NET 9 Web API.
+A full-stack e-commerce platform built with Angular, Node.js, Express, and MongoDB.
 
 ## Tech Stack
 
 | Layer | Technology |
 |-------|-----------|
-| Frontend | Angular 18, TypeScript, TailwindCSS |
-| Backend | .NET 9 Web API, C# |
-| Database | SQL Server (Entity Framework Core) |
-| Auth | JWT (ASP.NET Core Identity) |
+| Frontend | Angular, TypeScript, TailwindCSS |
+| Backend | Node.js, Express |
+| Database | MongoDB |
+| Auth | JWT |
 
 ## Features
 
@@ -25,13 +25,13 @@ A full-stack e-commerce platform built with Angular 18 and .NET 9 Web API.
 ### Backend
 ```bash
 cd backend
-dotnet restore
-dotnet run
+npm install
+npm run start
 ```
 
 ### Frontend
 ```bash
 cd frontend
 npm install
-ng serve
+npm run start
 ```

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-  <meta name="description" content="Full online store with product catalog, cart, checkout, order history, and admin dashboard. Built with Angular 18, .NET 9, SQL Server.">
+  <meta name="description" content="Full online store with product catalog, cart, checkout, order history, and admin dashboard. Built with Angular, Node.js, MongoDB.">
   <meta property="og:title" content="E-commerce Platform - Mostafa Ali Portfolio">
   <meta property="og:description" content="Full-featured e-commerce platform with product management, shopping cart, Stripe payments, and admin dashboard.">
   <meta property="og:type" content="website">
@@ -132,9 +132,9 @@
   <a href="../" class="back-link"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
 
   <section class="hero">
-    <div class="hero-badge"><i class="fas fa-shopping-cart"></i> Angular + .NET + SQL Server</div>
+    <div class="hero-badge"><i class="fas fa-shopping-cart"></i> Angular + Node.js + MongoDB</div>
     <h1 class="hero-title">E-Commerce Platform</h1>
-    <p class="hero-desc">An online store showcase with ASP.NET Core Identity, JWT authentication, product catalog management, shopping cart, and admin dashboard.</p>
+    <p class="hero-desc">An online store showcase with JWT authentication, product catalog management, shopping cart, and admin dashboard.</p>
   </section>
 
   <div class="mockup">
@@ -232,7 +232,7 @@
   <div class="section-title"><i class="fas fa-bullseye"></i> Case Study</div>
   <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
     <div class="feature-card"><i class="fas fa-exclamation-triangle" style="color:#f59e0b"></i><h4>Problem</h4><p>Small businesses need an affordable, full-featured e-commerce platform without monthly subscription fees.</p></div>
-    <div class="feature-card"><i class="fas fa-lightbulb" style="color:#8b5cf6"></i><h4>Solution</h4><p>Developed a complete e-commerce platform with Angular 18 frontend and .NET 9 backend with SQL Server featuring product management, shopping cart, order tracking, and admin dashboard.</p></div>
+    <div class="feature-card"><i class="fas fa-lightbulb" style="color:#8b5cf6"></i><h4>Solution</h4><p>Developed a complete e-commerce platform with Angular frontend and Node.js backend with MongoDB featuring product management, shopping cart, order tracking, and admin dashboard.</p></div>
     <div class="feature-card"><i class="fas fa-chart-line" style="color:#22c55e"></i><h4>Result</h4><p>Self-hosted e-commerce platform with JWT authentication, role-based access, and full CRUD product management.</p></div>
   </div>
 </section>
@@ -241,8 +241,8 @@
   <div class="features-grid">
     <div class="feature-card">
       <div class="feature-card-icon"><i class="fas fa-shield-alt"></i></div>
-      <h3>ASP.NET Core Identity + JWT</h3>
-      <p>Secure authentication with built-in Identity framework and JWT token-based authorization.</p>
+      <h3>JWT Authentication</h3>
+      <p>Secure authentication with JWT token-based authorization.</p>
     </div>
     <div class="feature-card">
       <div class="feature-card-icon"><i class="fas fa-boxes"></i></div>
@@ -275,35 +275,32 @@
   <div class="tech-tags">
     <span class="tech-tag angular"><i class="fab fa-angular"></i> Angular 18</span>
     <span class="tech-tag ts"><i class="fab fa-js"></i> TypeScript</span>
-    <span class="tech-tag dotnet"><i class="fab fa-microsoft"></i> .NET 9</span>
-    <span class="tech-tag csharp"><i class="fas fa-code"></i> C#</span>
-    <span class="tech-tag sql"><i class="fas fa-database"></i> SQL Server</span>
-    <span class="tech-tag efcore"><i class="fas fa-database"></i> EF Core</span>
-    <span class="tech-tag identity"><i class="fas fa-shield-alt"></i> Identity</span>
+    <span class="tech-tag sql"><i class="fas fa-database"></i> MongoDB</span>
     <span class="tech-tag jwt"><i class="fas fa-key"></i> JWT</span>
   </div>
 
   <h2 class="section-title"><i class="fas fa-sitemap"></i> Project Structure</h2>
   <div class="arch-tree">
 <pre><span class="dir">backend/</span>
-  <span class="file">├── Program.cs</span>
-  <span class="file">├── appsettings.json</span>
-  <span class="file">├── Controllers/</span>
-  <span class="file">│   ├── AuthController.cs</span>
-  <span class="file">│   ├── ProductsController.cs</span>
-  <span class="file">│   └── OrdersController.cs</span>
-  <span class="file">├── Models/</span>
-  <span class="file">│   ├── Product.cs</span>
-  <span class="file">│   └── Order.cs</span>
-  <span class="file">├── Data/</span>
-  <span class="file">│   ├── AppDbContext.cs</span>
-  <span class="file">│   └── DbSeeder.cs</span>
-  <span class="file">├── DTOs/</span>
-  <span class="file">│   ├── ProductDTOs.cs</span>
-  <span class="file">│   └── OrderDTOs.cs</span>
-  <span class="file">└── Services/</span>
-  <span class="file">    ├── ProductService.cs</span>
-  <span class="file">    └── OrderService.cs</span>
+  <span class="file">├── server.js</span>
+  <span class="file">├── package.json</span>
+  <span class="file">├── config/</span>
+  <span class="file">│   └── db.js</span>
+  <span class="file">├── controllers/</span>
+  <span class="file">│   ├── authController.js</span>
+  <span class="file">│   ├── productController.js</span>
+  <span class="file">│   └── orderController.js</span>
+  <span class="file">├── models/</span>
+  <span class="file">│   ├── Product.js</span>
+  <span class="file">│   └── Order.js</span>
+  <span class="file">├── middleware/</span>
+  <span class="file">│   └── auth.js</span>
+  <span class="file">├── routes/</span>
+  <span class="file">│   ├── auth.js</span>
+  <span class="file">│   ├── products.js</span>
+  <span class="file">│   └── orders.js</span>
+  <span class="file">└── utils/</span>
+  <span class="file">    └── helpers.js</span>
 <span class="dir">frontend/</span>
   <span class="file">├── src/</span>
   <span class="file">│   ├── index.html</span>
